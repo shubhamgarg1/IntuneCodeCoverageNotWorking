@@ -1,0 +1,85 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+//    id 'com.google.firebase.firebase-perf'
+    id 'com.microsoft.intune.mam'
+    id 'jacoco'
+}
+intunemam {
+//    Right now all MAM related code is written with checking if MAM Gradle plugin is applied or not
+//    Since OD uses MAM turning to on by default in devBuild
+//    We may turn it off in future or when MAM code is handled properly considering UninitializedContextProvider
+//    excludeVariants=['devBuild']
+    report = true
+    //To enable support for building incrementally, aimed at increasing build performance
+    //by processing only the input files that have changed
+    incremental = true
+    excludeClasses = ["module-info"]
+}
+
+android {
+    namespace 'com.example.intunesample'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.intunesample"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = '11'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+
+    implementation fileTree(include: ['*.jar'], dir: '../Microsoft Intune/libs')
+    implementation "com.google.dagger:hilt-android:2.44"
+    kapt "com.google.dagger:hilt-compiler:2.44"
+    implementation project(':Microsoft.Intune.MAM.SDK')
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation ('androidx.appcompat:appcompat:1.4.1')
+    implementation ('com.google.android.material:material:1.0.0')
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.4'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    testImplementation "com.google.dagger:hilt-android-testing:2.44"
+    kaptTest "com.google.dagger:hilt-android-compiler:2.44"
+    testAnnotationProcessor "com.google.dagger:hilt-android-compiler:2.44"
+
+    androidTestImplementation "com.google.dagger:hilt-android-testing:2.44"
+    kaptAndroidTest "com.google.dagger:hilt-android-compiler:2.44"
+    androidTestAnnotationProcessor "com.google.dagger:hilt-android-compiler:2.44"
+}

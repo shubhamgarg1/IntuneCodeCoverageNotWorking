@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "IntuneSample"
+include ':app'
+include ':testOnlyModule'
+include ':Microsoft.Intune.MAM.SDK'
+project(':Microsoft.Intune.MAM.SDK').projectDir = new File('Microsoft Intune/Microsoft.Intune.MAM.SDK')
