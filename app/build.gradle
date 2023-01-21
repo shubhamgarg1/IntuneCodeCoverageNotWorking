@@ -15,7 +15,7 @@ intunemam {
     report = true
     //To enable support for building incrementally, aimed at increasing build performance
     //by processing only the input files that have changed
-    incremental = true
+    incremental = false
     excludeClasses = ["module-info"]
 }
 
@@ -30,7 +30,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+//        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.intunesample.ARRunner"
     }
 
     buildTypes {
@@ -74,6 +75,8 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
+
+    androidTestImplementation project(':sharedTest')
 
     testImplementation "com.google.dagger:hilt-android-testing:2.44"
     kaptTest "com.google.dagger:hilt-android-compiler:2.44"

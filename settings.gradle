@@ -17,3 +17,4 @@ include ':app'
 include ':testOnlyModule'
 include ':Microsoft.Intune.MAM.SDK'
 project(':Microsoft.Intune.MAM.SDK').projectDir = new File('Microsoft Intune/Microsoft.Intune.MAM.SDK')
+include ':sharedTest'

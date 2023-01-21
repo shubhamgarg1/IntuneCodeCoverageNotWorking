@@ -1,8 +1,7 @@
-package com.example.intunesample
+package com.example.sharedtest
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.example.sharedtest.ARSharedTestUtil
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,10 +17,8 @@ import org.junit.Assert.*
 class ExampleInstrumentedTest {
     @Test
     fun useAppContext() {
-
-        ARSharedTestUtil.getCommonStringFromApp()
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.intunesample", appContext.packageName)
+        assertEquals("com.example.sharedtest.test", appContext.packageName)
     }
 }

@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/Microsoft Intune/Microsoft.Intune.MAM.SDK" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/sharedTest" />
             <option value="$PROJECT_DIR$/testOnlyModule" />
           </set>
         </option>
