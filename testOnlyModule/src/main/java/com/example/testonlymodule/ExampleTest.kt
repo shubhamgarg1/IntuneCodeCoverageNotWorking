@@ -1,5 +1,6 @@
 package com.example.testonlymodule
 
+import android.content.Intent
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
@@ -37,9 +38,8 @@ class ExampleTest {
         activityScenarioRule.scenario.onActivity {
             val appContext = InstrumentationRegistry.getInstrumentation().targetContext
             assertEquals("com.example.intunesample", appContext.packageName)
-
-
-
+            val intent = Intent()
+            it.onNewIntent(intent)
 //            Thread.sleep(5000)
         }
         Espresso.onView(ViewMatchers.withId(com.example.intunesample.R.id.toolbar)).check(

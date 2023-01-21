@@ -1,5 +1,6 @@
 package com.example.intunesample
 
+import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,10 @@ class MainActivity : AppCompatActivity() {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
+    }
+
+    public override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
